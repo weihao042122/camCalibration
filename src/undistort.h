@@ -14,14 +14,23 @@ public:
     {
         this->srcImgPath=srcImgPath;
         this->calibResultPath=calibResultPath;
+        this->calibResultFile="";
         this->K=Mat::eye(Size(3, 3), CV_32FC1);
-        this->discoeff=Mat::zeros(Size(1, 4), CV_32FC1);
+        this->discoeff=Mat::zeros(Size(1, 5), CV_32FC1);
+    }
+    CUndistort(string srcImgPath, int t, string calibResultFile)
+    {
+        this->srcImgPath=srcImgPath;
+        this->calibResultFile=calibResultFile;
+        this->K=Mat::eye(Size(3, 3), CV_32FC1);
+        this->discoeff=Mat::zeros(Size(1, 5), CV_32FC1);
     }
     ~CUndistort(){}
 
 private:
     string srcImgPath;
     string calibResultPath;
+    string calibResultFile;
     vector<Mat> srcImgList;
     vector<Mat> dsrImgList;
     Mat K;

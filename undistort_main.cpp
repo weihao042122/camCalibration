@@ -3,7 +3,7 @@
 using namespace std;
 
 void help_print(string a){
-    cout << a << " [calibResultPath] [Img] [outFile]" << endl;
+    cout << a << " [calibResultFile] [Img] [outFile]" << endl;
 }
 int main(int argc, char **argv){
     
@@ -11,14 +11,14 @@ int main(int argc, char **argv){
         help_print(argv[0]);
         exit(-1);
     }
-    string calibResultPath = argv[1];
+    string calibResultFile = argv[1];
     string srcImgPath = argv[2];
     char* file = NULL;
     if (argc >3) {
         file = argv[3];
     }
     
-    CUndistort undistort(srcImgPath, calibResultPath);
+    CUndistort undistort(srcImgPath, 0, calibResultFile);
     undistort.run(file);
     return 0;
 }

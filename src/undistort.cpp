@@ -3,7 +3,10 @@
 bool CUndistort::readParams()
 {
     ifstream in;
-    in.open(calibResultPath+"/calibResult.txt", ios::in);
+    if (calibResultFile != "")
+        in.open(calibResultFile, ios::in);
+    else
+        in.open(calibResultPath+"/calibResult.txt", ios::in);
     
 #if 0
     in>>K.at<float>(0, 0);
