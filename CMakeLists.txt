@@ -33,9 +33,13 @@ aux_source_directory( ${CMAKE_CURRENT_SOURCE_DIR}/src DIR_SRCS)
 add_executable(${APPNAME} ${DIR_SRCS} calibration_main.cpp)
 add_executable(undistort ${DIR_SRCS} undistort_main.cpp)
 add_executable(extCalibra extCalibra.cpp)
+add_executable(orbTest orbTest.cpp src/tools.cpp)
+add_executable(uv2xyz uv2xyz.cpp src/tools.cpp)
 
 # Link your application with OpenCV libraries
 target_link_libraries(${APPNAME} ${OpenCV_LIBS})
 target_link_libraries(undistort ${OpenCV_LIBS})
 target_link_libraries(extCalibra ${OpenCV_LIBS})
+target_link_libraries(orbTest ${OpenCV_LIBS})
+target_link_libraries(uv2xyz ${OpenCV_LIBS})
 
